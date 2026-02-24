@@ -2,15 +2,18 @@ package com.back.jsb_exam;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainController {
     @GetMapping("/")
-    public void index(){
-        System.out.println("hello world");
+    @ResponseBody
+    public String index(){
+        return "index";
     }
     @GetMapping("hello")
-    public  void hello(){
-        System.out.println("hello()");
+    @ResponseBody
+    public  String hello(){
+        return "hello";
     }
 }
