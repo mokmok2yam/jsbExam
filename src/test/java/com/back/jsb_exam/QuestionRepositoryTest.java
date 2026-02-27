@@ -1,0 +1,46 @@
+package com.back.jsb_exam;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@SpringBootTest
+@ActiveProfiles("test")
+public class QuestionRepositoryTest {
+    @Autowired
+    private  QuestionRepository questionRepository;
+    @Autowired
+    private  AnwerRepository anwerRepository;
+
+    @Test
+    void t1(){
+        Question q1 = new Question();
+        q1.setSubject("sbb가 뭔가요");
+        q1.setContent("sbb가 무엇인지 알고싶어요");
+        questionRepository.save(q1);
+        Answer a1 = new Answer();
+        a1.setContent("sbb는 스프링부트 게시판입니다");
+        a1.setQuestion(q1);
+        anwerRepository.save(a1);
+        Answer a2 = new Answer();
+        a2.setContent("sbb는 스프링부트 게시판입니다2");
+        a2.setQuestion(q1);
+        anwerRepository.save(a2);
+    }
+    @Test
+    @Transactional
+    void t2(){
+        Question q1=questionRepository.findById(1).get();
+        System.out.println(q1.getSubject());
+        System.out.println(q1.getContent());
+        //q1질문에 대한 답글
+        List<Answer> answers=q1.getAnswerList();
+        for(Answer a : answers){
+            System.out.println(a.getContent());
+        }
+    }
+}

@@ -11,7 +11,7 @@ public class JsbExamApplication {
         SpringApplication.run(JsbExamApplication.class, args);
 
         // 답글로 부터 질문을 찾아가는 방법
-        Answer a = new Answer();
+       /* Answer a = new Answer();
 
         // questionRepository.findById(a.question.getId()) // db 방법
 
@@ -19,7 +19,7 @@ public class JsbExamApplication {
         Question question = a.getQuestion();
         question.getContent();
 
-        a.getQuestion().getContent();
+        a.getQuestion().getContent();*/
 
         // 특정 질문에 달린 모든 답글들
 
